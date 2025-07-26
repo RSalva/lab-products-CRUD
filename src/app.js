@@ -1,6 +1,7 @@
 const express = require("express");
 const createError = require("http-errors");
 const logger = require("morgan");
+const mongoose = require("mongoose");
 
 require("./config/db.config");
 
@@ -19,10 +20,15 @@ app.use((req, res, next) => {
 });
 
 app.use((error, req, res, next) => {
+  if (error instanceof mongoose.Error.ValidationError) {
+    return res.status(400).json({ errors: error.errors });
+  }
+
+  console.error(error);
+
   if (!error.status) {
     error = createError(500, error.message);
   }
-  console.error(error);
 
   res.status(error.status).json({ message: error.message });
 });

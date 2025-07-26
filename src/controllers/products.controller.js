@@ -3,38 +3,32 @@ const Product = require("../models/products.model");
 
 module.exports.list = (req, res, next) => {
   Product.find()
+    .populate("comments")
     .then((products) => {
       res.json(products);
     })
-    .catch((error) => {
-      next(error);
-    });
+    .catch(next);
 };
 
 module.exports.detail = (req, res, next) => {
   Product.findById(req.params.id)
+    .populate("comments")
     .then((product) => {
       if (product) {
         res.json(product);
       } else {
-        res.status(404).json({ message: "Product not found" });
+        next(createError(404, "User not found"));
       }
     })
-    .catch((error) => next(error));
+    .catch(next);
 };
 
 module.exports.create = (req, res, next) => {
-  console.log(req.body);
   Product.create(req.body)
     .then((product) => {
       res.status(201).json(product);
     })
-    .catch((error) => {
-      if (error instanceof mongoose.Error.ValidationError) {
-        return res.status(400).json({ errors: error.errors })
-      }
-      next(error);
-    });
+    .catch(next);
 };
 
 module.exports.update = (req, res, next) => {
@@ -46,15 +40,10 @@ module.exports.update = (req, res, next) => {
       if (product) {
         res.json(product);
       } else {
-        res.status(404).json({ message: "Product not found" });
+        next(createError(404, "Product not found"));
       }
     })
-    .catch((error) => {
-      if (error instanceof mongoose.Error.ValidationError) {
-        return res.status(400).json({ errors: error.errors });
-      }
-      next(error);
-    });
+    .catch(next);
 };
 
 module.exports.delete = (req, res, next) => {
@@ -63,10 +52,8 @@ module.exports.delete = (req, res, next) => {
       if (product) {
         res.status(204).send();
       } else {
-        res.status(404).json({ message: "Product not found" });
+        next(createError(404, "Product not found"));
       }
     })
-    .catch((error) => {
-      res.status(400).json({ message: "Invalid request" });
-    });
+    .catch(next);
 };

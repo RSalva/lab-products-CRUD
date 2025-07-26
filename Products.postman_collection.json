@@ -7,6 +7,101 @@
 	},
 	"item": [
 		{
+			"name": "Comments and products",
+			"item": [
+				{
+					"name": "New Request",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"commentary\": \"meka meka\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/api/v1/products/68849db7f601d67a2ae6c15e/comments",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"v1",
+								"products",
+								"68849db7f601d67a2ae6c15e",
+								"comments"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "New Request",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"commentary\": \"tram tram\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/api/v1/products/68849e780ce733ac56286ab1/comments/6884c0022758daf5acb4e06d",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"v1",
+								"products",
+								"68849e780ce733ac56286ab1",
+								"comments",
+								"6884c0022758daf5acb4e06d"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "New Request",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"commentary\": \"tram tram\"\r\n}"
+						},
+						"url": {
+							"raw": "localhost:3000/api/v1/products/68849e780ce733ac56286ab1/comments/6884c0022758daf5acb4e06d",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"v1",
+								"products",
+								"68849e780ce733ac56286ab1",
+								"comments",
+								"6884c0022758daf5acb4e06d"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
 			"name": "Create",
 			"request": {
 				"method": "POST",

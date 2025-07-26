@@ -1,5 +1,7 @@
 const mongoose = require("mongoose");
 
+require("./comments.model");
+
 const schema = new mongoose.Schema(
   {
     name: {
@@ -54,6 +56,7 @@ const schema = new mongoose.Schema(
   {
     timestamps: true,
     toJSON: {
+      virtuals: true,
       transform: (doc, ret) => {
         ret.id = ret._id;
         ret.currentCost = Math.round(ret.price * (1 - ret.discount / 100));
@@ -64,6 +67,12 @@ const schema = new mongoose.Schema(
     },
   }
 );
+
+schema.virtual("comments", {
+  ref: "Comment",
+  localField: "_id",
+  foreignField: "product"
+});
 
 const Product = mongoose.model("Product", schema);
 
