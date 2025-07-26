@@ -10,7 +10,7 @@
 			"name": "Comments and products",
 			"item": [
 				{
-					"name": "New Request",
+					"name": "Create Commentary",
 					"request": {
 						"method": "POST",
 						"header": [],
@@ -41,7 +41,7 @@
 					"response": []
 				},
 				{
-					"name": "New Request",
+					"name": "Update Commentary",
 					"request": {
 						"method": "PATCH",
 						"header": [],
@@ -73,7 +73,7 @@
 					"response": []
 				},
 				{
-					"name": "New Request",
+					"name": "Delete Commentary",
 					"request": {
 						"method": "DELETE",
 						"header": [],
@@ -94,6 +94,70 @@
 								"68849e780ce733ac56286ab1",
 								"comments",
 								"6884c0022758daf5acb4e06d"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Commentary (product validation)",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"commentary\": \"Colocau\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/api/v1/products/68849db7f601d67a2ae6c15e/comments/",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"v1",
+								"products",
+								"68849db7f601d67a2ae6c15e",
+								"comments",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Commentary (product validation)",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"commentary\": \"wuku wuku\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/api/v1/products/68849db7f601d67a2ae6c15e/comments/6884bf92b2557404465db6bd",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"v1",
+								"products",
+								"68849db7f601d67a2ae6c15e",
+								"comments",
+								"6884bf92b2557404465db6bd"
 							]
 						}
 					},
