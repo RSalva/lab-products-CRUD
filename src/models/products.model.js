@@ -56,7 +56,7 @@ const schema = new mongoose.Schema(
     toJSON: {
       transform: (doc, ret) => {
         ret.id = ret._id;
-        ret.currentCost = ret.price * (1 - ret.discount / 100);
+        ret.currentCost = Math.round(ret.price * (1 - ret.discount / 100));
         delete ret._id;
         delete ret.__v;
         return ret;

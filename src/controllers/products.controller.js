@@ -24,9 +24,10 @@ module.exports.detail = (req, res, next) => {
 };
 
 module.exports.create = (req, res, next) => {
+  console.log(req.body);
   Product.create(req.body)
     .then((product) => {
-      res.status(201).json(user);
+      res.status(201).json(product);
     })
     .catch((error) => {
       if (error instanceof mongoose.Error.ValidationError) {
@@ -60,7 +61,7 @@ module.exports.delete = (req, res, next) => {
   Product.findByIdAndDelete(req.params.id)
     .then((product) => {
       if (product) {
-        resizeTo.status(204).send();
+        res.status(204).send();
       } else {
         res.status(404).json({ message: "Product not found" });
       }
