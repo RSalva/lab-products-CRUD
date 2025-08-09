@@ -4,6 +4,7 @@ const express = require("express");
 const createError = require("http-errors");
 const logger = require("morgan");
 const mongoose = require("mongoose");
+const { deleteFile } = require("./lib/storage");
 
 require("./lib/db");
 
@@ -21,6 +22,17 @@ app.use((req, res, next) => {
 });
 
 app.use((error, req, res, next) => {
+  if (
+    error instanceof mongoose.Error.CastError &&
+    error.message.includes("_id")
+  ) {
+    error = createError(404, "Resource not found");
+  }
+  if (req.file) {
+    console.log("removed uploaded file");
+    deleteFile(req.file.filename);
+  }
+
   if (error instanceof mongoose.Error.ValidationError) {
     return res.status(400).json({ errors: error.errors });
   }

@@ -1,6 +1,7 @@
 const mongoose = require("mongoose");
 
 require("./comments.model");
+require("./productImage.model");
 
 const schema = new mongoose.Schema(
   {
@@ -19,14 +20,14 @@ const schema = new mongoose.Schema(
     price: {
       type: Number,
       required: [true, "Price is required"],
-      min: 0
+      min: 0,
     },
     discount: {
       type: Number,
       required: [true, "Discount is required"],
       default: 0,
       min: 0,
-      max: 100
+      max: 100,
     },
     category: {
       type: String,
@@ -44,14 +45,14 @@ const schema = new mongoose.Schema(
           "Grocery",
           "Pet Supplies",
         ],
-        message: "Introduce a valid category"
+        message: "Introduce a valid category",
       },
     },
     stock: {
       type: Number,
       required: [true, "Quantity of product is required"],
-      min: 0
-    }
+      min: 0,
+    },
   },
   {
     timestamps: true,
@@ -70,6 +71,12 @@ const schema = new mongoose.Schema(
 
 schema.virtual("comments", {
   ref: "Comment",
+  localField: "_id",
+  foreignField: "product",
+});
+
+schema.virtual("images", {
+  ref: "ProductImage",
   localField: "_id",
   foreignField: "product"
 });

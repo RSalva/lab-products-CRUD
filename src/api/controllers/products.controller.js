@@ -14,7 +14,7 @@ module.exports.list = async (req, res, next) => {
 };
 
 module.exports.detail = async (req, res, next) => {
-  const product = await Product.findById(req.params.id).populate("comments");
+  const product = await Product.findById(req.params.id).populate("comments").populate("images");
   if (product) res.json(product);
   else next(ProductNotFound);
 };
