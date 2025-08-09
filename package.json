@@ -1,5 +1,8 @@
 {
   "dependencies": {
+    "convict": "^6.2.4",
+    "convict-format-with-validator": "^6.2.0",
+    "dotenv": "^17.2.1",
     "express": "^5.1.0",
     "http-errors": "^2.0.0",
     "mongoose": "^8.16.4",
@@ -8,9 +11,8 @@
   "name": "lab-products-crud",
   "version": "1.0.0",
   "main": "src/app.js",
-  "devDependencies": {},
   "scripts": {
-    "start": "node src/app.js", 
+    "start": "node src/app.js",
     "dev": "node --watch src/app.js"
   },
   "repository": {

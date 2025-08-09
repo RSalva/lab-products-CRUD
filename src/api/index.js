@@ -1,8 +1,8 @@
 const express = require("express");
 const router = express.Router();
 
-const products = require("../controllers/products.controller");
-const comments = require("../controllers/comments.controller");
+const products = require("./controllers/products.controller");
+const comments = require("./controllers/comments.controller");
 
 // PRODUCTS CRUD
 
