@@ -9,7 +9,7 @@ const ProductAlreadyExists = createError(409, {
 });
 
 module.exports.list = async (req, res, next) => {
-  const products = await Product.find().populate("comments");
+  const products = await Product.find().populate("comments").populate("images");
   res.json(products);
 };
 
