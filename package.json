@@ -16,7 +16,10 @@
   "main": "src/app.js",
   "scripts": {
     "start": "node src/app.js",
-    "dev": "node --watch src/app.js"
+    "seeds": "node src/bin/seeds.js",
+    "dev": "node --watch src/app.js",
+    "test": "jest",
+    "test:coverage": "jest --coverage"
   },
   "repository": {
     "type": "git",
@@ -29,5 +32,10 @@
     "url": "https://github.com/RSalva/lab-products-CRUD/issues"
   },
   "homepage": "https://github.com/RSalva/lab-products-CRUD#readme",
-  "description": ""
+  "description": "",
+  "devDependencies": {
+    "@faker-js/faker": "^9.9.0",
+    "jest": "^30.0.5",
+    "supertest": "^7.1.4"
+  }
 }

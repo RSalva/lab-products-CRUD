@@ -50,4 +50,4 @@ app.listen(config.get("port"), () =>
   console.info(`Applicaiton listening at port ${config.get("port")}`)
 );
 
-//module.exports = app;
+module.exports = app;
